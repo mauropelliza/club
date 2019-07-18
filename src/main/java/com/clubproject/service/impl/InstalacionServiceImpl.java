@@ -1,11 +1,11 @@
-package club.clubproject.service.impl;
+package com.clubproject.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import club.clubproject.model.Instalacion;
-import club.clubproject.repository.InstalacionJpaDao;
-import club.clubproject.service.InstalacionService;
+import com.clubproject.model.Instalacion;
+import com.clubproject.repository.InstalacionJpaDao;
+import com.clubproject.service.InstalacionService;
 
 @Service
 public class InstalacionServiceImpl implements InstalacionService {

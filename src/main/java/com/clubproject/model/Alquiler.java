@@ -1,4 +1,4 @@
-package club.clubproject.model;
+package com.clubproject.model;
 
 import java.time.LocalDateTime;
 

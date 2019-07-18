@@ -1,6 +1,6 @@
-package club.clubproject.service;
+package com.clubproject.service;
 
-import club.clubproject.model.Instalacion;
+import com.clubproject.model.Instalacion;
 
 public interface InstalacionService {
 

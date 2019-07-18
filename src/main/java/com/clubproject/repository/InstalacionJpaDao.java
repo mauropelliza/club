@@ -1,9 +1,11 @@
-package club.clubproject.repository;
+package com.clubproject.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import club.clubproject.model.Instalacion;
+import com.clubproject.model.Instalacion;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface InstalacionJpaDao extends JpaRepository<Instalacion, Integer>{
 
 }

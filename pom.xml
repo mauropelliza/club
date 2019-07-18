@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.5.RELEASE</version>
+		<version>2.0.9.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.clubproject</groupId>
@@ -16,50 +16,83 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<springfox.version>2.9.2</springfox.version>
+		<junit.jupiter.version>5.3.2</junit.jupiter.version>		
 	</properties>
 
 	<dependencies>
-		<!-- se necesita para @EnableTransactionManagement  -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<!-- se necesita para @Configuration, @ComponentScan  -->
-		<dependency>
-    		<groupId>org.springframework</groupId>
-    		<artifactId>spring-context</artifactId>
-		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- esta dependencia es necesaria para RestController -->
+		<!-- es para importar SpringUtils -->
 		<dependency>
-    		<groupId>org.springframework.boot</groupId>
-    		<artifactId>spring-boot-starter-web</artifactId>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
 		</dependency>
 		
-		<!-- esto es para usar jparepository -->
+		<!--  swagger -->
 		<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-jpa</artifactId>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger2</artifactId>
+		    <version>${springfox.version}</version>
+		</dependency>
+		<!--  swagger -->
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger-ui</artifactId>
+		    <version>${springfox.version}</version>
 		</dependency>
 		
+		<!-- swagger -  soporte para JSR-303 -->
 		<dependency>
-		   <groupId>javax.persistence</groupId>
-		   <artifactId>persistence-api</artifactId>
-		   <version>1.0.2</version>
-		   <scope>provided</scope>
+		   <groupId>io.springfox</groupId>
+		   <artifactId>springfox-bean-validators</artifactId>
+		   <version>${springfox.version}</version>
 		</dependency>
+		<!--  necesario para HttpClientUtil -->
+		<dependency>
+		    <groupId>commons-httpclient</groupId>
+		    <artifactId>commons-httpclient</artifactId>
+		    <version>3.1</version>
+		</dependency>
+		
+		<!-- junit5 - permite la ejecucion de los test en la ide y maven -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- junit5 - api para el desarrollo de test -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>	
 	</dependencies>
 
 	<build>
