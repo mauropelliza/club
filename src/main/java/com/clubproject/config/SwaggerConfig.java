@@ -38,7 +38,6 @@ import com.clubproject.config.WebMvcConfiguration;
  */
 @Configuration
 @EnableSwagger2
-@Profile("!prod")
 public class SwaggerConfig extends WebMvcConfiguration {
 
 	@Bean
@@ -47,14 +46,14 @@ public class SwaggerConfig extends WebMvcConfiguration {
 				.paths(PathSelectors.any()).build().apiInfo(metaData());
 
 		// Soporte para JWT
-		docket.securityContexts(Lists.newArrayList(securityContext())).securitySchemes(Lists.newArrayList(apiKey()));
+//		docket.securityContexts(Lists.newArrayList(securityContext())).securitySchemes(Lists.newArrayList(apiKey()));
 
 		return docket;
 
 	}
 
 	private Predicate<RequestHandler> getRequestHandlers() {
-		return RequestHandlerSelectors.basePackage("club.clubproject.controller");
+		return RequestHandlerSelectors.basePackage("com.clubproject.controller");
 	}
 
 	@Override
@@ -81,24 +80,24 @@ public class SwaggerConfig extends WebMvcConfiguration {
 	/**
 	 * Soporte para JWT
 	 */
-	private ApiKey apiKey() {
-		return new ApiKey("JWT", JWTSecurityConstants.HEADER_STRING, "header");
-	}
-
-	/**
-	 * Soporte para JWT
-	 */
-	private SecurityContext securityContext() {
-		return SecurityContext.builder().securityReferences(defaultAuth()).forPaths(PathSelectors.any()).build();
-	}
-
-	/**
-	 * Soporte para JWT
-	 */
-	List<SecurityReference> defaultAuth() {
-		AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
-		AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-		authorizationScopes[0] = authorizationScope;
-		return Lists.newArrayList(new SecurityReference("JWT", authorizationScopes));
-	}
+//	private ApiKey apiKey() {
+//		return new ApiKey("JWT", JWTSecurityConstants.HEADER_STRING, "header");
+//	}
+//
+//	/**
+//	 * Soporte para JWT
+//	 */
+//	private SecurityContext securityContext() {
+//		return SecurityContext.builder().securityReferences(defaultAuth()).forPaths(PathSelectors.any()).build();
+//	}
+//
+//	/**
+//	 * Soporte para JWT
+//	 */
+//	List<SecurityReference> defaultAuth() {
+//		AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+//		AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+//		authorizationScopes[0] = authorizationScope;
+//		return Lists.newArrayList(new SecurityReference("JWT", authorizationScopes));
+//	}
 }
