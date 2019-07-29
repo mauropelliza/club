@@ -1,0 +1,43 @@
+<configuration scan="true" scanPeriod="10 seconds">
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>root.log</file><!-- en la base del proyecto -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>root_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d %-4relative  %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+  <appender name="STDOUT"
+    class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>
+        %d{HH:mm:ss.SSS} %-5level %logger - %msg%n
+     </pattern>
+    </encoder>
+  </appender>
+
+<!-- <logger name="ar.com.prisma" level="DEBUG" />
+  <logger name="ar.com.prisma.ater.dao.AltaTerminalDao" level="DEBUG" />
+  <logger name="ar.com.prisma.ater.service.impl.ReprogramacionServiceImpl" level="DEBUG" />
+  <logger name="ar.com.prisma.ater.dao.ReprogramacionDao" level="DEBUG" />
+  <logger name="org.hibernate.SQL" level="DEBUG" />
+  <logger name="org.hibernate.type.descriptor.sql" level="TRACE" /> 
+  <logger name="org.springframework.orm.jpa" level="INFO" />
+  <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="DEBUG" /> -->
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
+	<!--<appender-ref ref="FILE" /> -->
+  </root>
+
+</configuration>

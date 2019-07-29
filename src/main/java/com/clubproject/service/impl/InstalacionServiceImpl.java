@@ -1,5 +1,8 @@
 package com.clubproject.service.impl;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,4 +22,23 @@ public class InstalacionServiceImpl implements InstalacionService {
 		
 		return instalacion.getDescripcion();
 	}
+
+	@Override
+	public void bajaInstalacion(Integer id) {
+		Optional<Instalacion> instalacion = instalacionJpaDao.findById(id);
+		if (instalacion.isPresent())
+			instalacionJpaDao.delete(instalacion.get());
+	}
+
+	@Override
+	public void modificarInstalacion(Instalacion dto) {
+		instalacionJpaDao.saveAndFlush(dto);
+	}
+
+	@Override
+	public List<Instalacion> buscarInstalacion(Instalacion dto) {
+		return null;
+	}
+	
+	
 }
